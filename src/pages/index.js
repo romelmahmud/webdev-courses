@@ -6,5 +6,16 @@ import Faq from "./FAQ/Faq";
 import Login from "./Login/Login";
 import Profile from "./Profile/Profile";
 import Register from "./Register/Register";
+import CourseDetails from "./CoursesDetails/CourseDetails";
 
-export { Home, AllCourses, Blog, Checkout, Faq, Login, Profile, Register };
+export {
+  Home,
+  AllCourses,
+  Blog,
+  Checkout,
+  Faq,
+  Login,
+  Profile,
+  Register,
+  CourseDetails,
+};

@@ -1,32 +1,57 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { StarIcon } from "@heroicons/react/24/solid";
 
-const CourseCard = () => {
+const CourseCard = ({ course }) => {
+  const {
+    course_title,
+    id,
+    category,
+    course_imgUrl,
+    category_id,
+    course_details,
+    instructor_info,
+    rating,
+  } = course;
   return (
-    <article class="overflow-hidden rounded-lg shadow transition hover:shadow-lg">
-      {/* <img
-        alt="Office"
-        src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-        class="h-56 w-full object-cover"
-      /> */}
+    <article className="overflow-hidden rounded-lg shadow-md transition hover:shadow-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white relative">
+      <span class="absolute right-4 top-4 z-10 inline-flex items-center rounded-full bg-slate-900 px-3 py-1 text-sm font-semibold text-white">
+        {rating} <StarIcon className="h-4 w-4 ml-1 text-yellow-400" />
+      </span>
+      <Link to={`/courses/${id}`}>
+        <img
+          alt="Office"
+          src={course_imgUrl}
+          className="h-56 w-full object-cover"
+        />
+      </Link>
+      <div className=" p-4 sm:p-6 ">
+        <div>
+          <img
+            src={instructor_info[0].imgUrl}
+            alt={instructor_info[0].name}
+            className="h-20 w-20 rounded-full mt-[-60px] shadow-md"
+          />
+          <span className="font-medium text-lg">{instructor_info[0].name}</span>
+        </div>
+        <div></div>
+      </div>
 
-      <div class="bg-white p-4 sm:p-6">
-        <time datetime="2022-10-10" class="block text-xs text-gray-500">
-          10th Oct 2022
-        </time>
-
-        <a href="/">
-          <h3 class="mt-0.5 text-lg text-gray-900">
-            How to position your furniture for positivity
+      <div className=" p-4 sm:p-6 mt-[-30px]">
+        <Link to={`/courses/${id}`}>
+          <h3 className="mt-0.5 text-2xl text-blue-500 font-semibold">
+            {course_title}
           </h3>
-        </a>
+        </Link>
 
-        <p class="mt-2 text-sm leading-relaxed text-gray-500 s">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae
-          dolores, possimus pariatur animi temporibus nesciunt praesentium
-          dolore sed nulla ipsum eveniet corporis quidem, mollitia itaque minus
-          soluta, voluptates neque explicabo tempora nisi culpa eius atque
-          dignissimos. Molestias explicabo corporis voluptatem?
-        </p>
+        <p className="mt-2 text-md leading-relaxed ">{course_details}</p>
+      </div>
+      <div className="p-4 sm:p-6 mt-[-30px]">
+        <Link to={`/courses/${id}`}>
+          <button className="py-2 px-4 bg-blue-600 rounded font-medium dark:text-white hover:bg-blue-700 transition-all duration-300 ease-in-out">
+            Course Details
+          </button>
+        </Link>
       </div>
     </article>
   );

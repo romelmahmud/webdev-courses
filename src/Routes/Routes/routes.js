@@ -4,6 +4,7 @@ import {
   AllCourses,
   Blog,
   Checkout,
+  CourseDetails,
   Faq,
   Home,
   Login,
@@ -33,6 +34,14 @@ export const routes = createBrowserRouter([
         element: <AllCourses />,
         loader: () =>
           fetch("https://webdev-courses-romelmahmud.vercel.app/courses"),
+      },
+      {
+        path: "/courses/:id",
+        element: <CourseDetails />,
+        loader: ({ params }) =>
+          fetch(
+            `https://webdev-courses-romelmahmud.vercel.app/courses/${params.id}`
+          ),
       },
       {
         path: "/checkout",
