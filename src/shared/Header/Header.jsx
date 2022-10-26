@@ -14,11 +14,11 @@ const Header = () => {
     color: "rgb(59 130 246)",
   };
   return (
-    <div className="bg-gray-100  dark:bg-gray-900 h-24 text-white ">
-      <div className="mx-auto max-w-6xl px-6 md:px-5 flex justify-between items-center h-full">
+    <div className="bg-white  dark:bg-gray-900 h-24 dark:text-white text-gray-900  ">
+      <div className="mx-auto max-w-7xl px-6 md:px-5 flex justify-between items-center h-full">
         <div className="flex items-center text-blue-500">
-          <AcademicCapIcon className="h-10 w-10 mr-4" />
-          <Link to="/home" className="font-extrabold text-3xl  ">
+          <AcademicCapIcon className="h-8 w-8 md:h-10 md:w-10 mr-3 md:mr-4" />
+          <Link to="/home" className="font-extrabold md:text-2xl text-xl  ">
             WebDev Courses
           </Link>
         </div>
@@ -37,12 +37,12 @@ const Header = () => {
             />
           )}
         </div>
-        <nav className="hidden md:block">
-          <ul className="md:flex">
+        <nav className="flex items-center">
+          <ul className=" hidden md:flex mr-10 ">
             <li>
               <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="ml-4 text-lg  font-medium hover:text-blue-500 transition-all duration-300 ease-in-out"
+                className="ml-6 text-lg  font-medium  hover:text-blue-500 transition-all duration-300 ease-in-out"
                 to={"home"}
               >
                 Home
@@ -51,7 +51,7 @@ const Header = () => {
             <li>
               <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="ml-4 text-lg  font-medium hover:text-blue-500 transition-all duration-300 ease-in-out"
+                className="ml-6 text-lg font-medium   hover:text-blue-500 transition-all duration-300 ease-in-out"
                 to={"/courses"}
               >
                 AllCourses
@@ -60,7 +60,7 @@ const Header = () => {
             <li>
               <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="ml-4 text-lg  font-medium hover:text-blue-500 transition-all duration-300 ease-in-out"
+                className="ml-6 text-lg font-medium  hover:text-blue-500 transition-all duration-300 ease-in-out"
                 to={"/faq"}
               >
                 FAQ
@@ -69,23 +69,23 @@ const Header = () => {
             <li>
               <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="ml-4 text-lg  font-medium hover:text-blue-500 transition-all duration-300 ease-in-out"
+                className="ml-6 text-lg font-medium  hover:text-blue-500 transition-all duration-300 ease-in-out"
                 to={"blog"}
               >
                 Blog
               </NavLink>
             </li>
-            <li className="ml-4 text-lg  font-medium hover:text-blue-500">
+          </ul>
+          <ul className="flex items-center">
+            <li className="ml-4 text-lg  font-medium ">
               <ToggleButton />
             </li>
-            <li className="ml-4 text-lg  font-medium hover:text-blue-500">
-              login/register
-            </li>
+            <li className="ml-4 text-lg   hover:text-blue-500">login</li>
           </ul>
         </nav>
         {/* Mobile nav menu */}
         <nav
-          className={`md:hidden absolute bg-slate-900 w-full pb-5 left-0 text-center transition-all  duration-500 ease-in-out ${
+          className={`md:hidden absolute bg-white dark:bg-slate-900 w-full pb-5 left-0 text-center transition-all  duration-500 ease-in-out ${
             open ? "top-24" : "top-[-320px]"
           }`}
         >
@@ -103,25 +103,25 @@ const Header = () => {
               <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 className="my-6 text-xl font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
-                to={"topics"}
+                to={"/courses"}
               >
-                Topics
+                AllCourses
               </NavLink>
             </li>
             <li className="my-4">
               <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 className="my-6 text-xl font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
-                to={"statistics"}
+                to={"/faq"}
               >
-                Statistics
+                FAQ
               </NavLink>
             </li>
             <li className="my-4">
               <NavLink
                 style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 className="text-xl font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
-                to={"blog"}
+                to={"/blog"}
               >
                 Blog
               </NavLink>

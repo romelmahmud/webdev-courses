@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../../context/themeContext/themeContext";
-import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
+import { SunIcon } from "@heroicons/react/24/solid";
+import { MoonIcon } from "@heroicons/react/24/outline";
 
 const ToggleButton = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -12,7 +13,7 @@ const ToggleButton = () => {
         </button>
       ) : (
         <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-          <MoonIcon className="h-6 w-6" />
+          <MoonIcon className="h-6 w-6 " />
         </button>
       )}
     </>
