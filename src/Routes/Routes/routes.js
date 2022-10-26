@@ -31,6 +31,8 @@ export const routes = createBrowserRouter([
       {
         path: "/courses",
         element: <AllCourses />,
+        loader: () =>
+          fetch("https://webdev-courses-romelmahmud.vercel.app/courses"),
       },
       {
         path: "/checkout",
