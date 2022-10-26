@@ -48,7 +48,7 @@ const CourseCard = ({ course }) => {
       </div>
       <div className="p-4 sm:p-6 mt-[-30px]">
         <Link to={`/courses/${id}`}>
-          <button className="py-2 px-4 bg-blue-600 rounded font-medium dark:text-white hover:bg-blue-700 transition-all duration-300 ease-in-out">
+          <button className="py-2 px-4 bg-blue-600 rounded font-medium text-white hover:bg-blue-700 transition-all duration-300 ease-in-out">
             Course Details
           </button>
         </Link>
