@@ -1,5 +1,12 @@
+import { Home, Login } from "./pages";
+
 function App() {
-  return <h1>Hello world!!</h1>;
+  return (
+    <>
+      <Home></Home>
+      <Login />
+    </>
+  );
 }
 
 export default App;
