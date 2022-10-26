@@ -6,6 +6,7 @@ import {
   AcademicCapIcon,
 } from "@heroicons/react/24/solid";
 import ToggleButton from "./ToggleButton";
+import Container from "../../Layout/Container/Container";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -15,120 +16,122 @@ const Header = () => {
   };
   return (
     <div className="bg-white  dark:bg-gray-900 h-24 dark:text-white text-gray-900  ">
-      <div className="mx-auto max-w-7xl px-6 md:px-5 flex justify-between items-center h-full">
-        <div className="flex items-center text-blue-500">
-          <AcademicCapIcon className="h-8 w-8 md:h-10 md:w-10 mr-3 md:mr-4" />
-          <Link to="/home" className="font-extrabold md:text-2xl text-xl  ">
-            WebDev Courses
-          </Link>
-        </div>
+      <Container>
+        <div className=" flex justify-between items-center h-full">
+          <div className="flex items-center text-blue-500">
+            <AcademicCapIcon className="h-8 w-8 md:h-10 md:w-10 mr-3 md:mr-4" />
+            <Link to="/home" className="font-extrabold md:text-2xl text-xl  ">
+              WebDev Courses
+            </Link>
+          </div>
 
-        <div className="md:hidden">
-          {open && (
-            <XMarkIcon
-              className="h-8 w-8 hover:text-blue-500 cursor-pointer"
-              onClick={() => setOpen(!open)}
-            />
-          )}
-          {!open && (
-            <Bars3Icon
-              onClick={() => setOpen(!open)}
-              className="h-8 w-8 hover:text-blue-500 cursor-pointer "
-            />
-          )}
+          <div className="md:hidden">
+            {open && (
+              <XMarkIcon
+                className="h-8 w-8 hover:text-blue-500 cursor-pointer"
+                onClick={() => setOpen(!open)}
+              />
+            )}
+            {!open && (
+              <Bars3Icon
+                onClick={() => setOpen(!open)}
+                className="h-8 w-8 hover:text-blue-500 cursor-pointer "
+              />
+            )}
+          </div>
+          <nav className="flex items-center">
+            <ul className=" hidden md:flex mr-10 ">
+              <li>
+                <NavLink
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                  className="ml-6 text-lg  font-medium  hover:text-blue-500 transition-all duration-300 ease-in-out"
+                  to={"home"}
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                  className="ml-6 text-lg font-medium   hover:text-blue-500 transition-all duration-300 ease-in-out"
+                  to={"/courses"}
+                >
+                  AllCourses
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                  className="ml-6 text-lg font-medium  hover:text-blue-500 transition-all duration-300 ease-in-out"
+                  to={"/faq"}
+                >
+                  FAQ
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                  className="ml-6 text-lg font-medium  hover:text-blue-500 transition-all duration-300 ease-in-out"
+                  to={"blog"}
+                >
+                  Blog
+                </NavLink>
+              </li>
+            </ul>
+            <ul className="flex items-center">
+              <li className="ml-4 text-lg  font-medium ">
+                <ToggleButton />
+              </li>
+              <li className="ml-4 text-lg   hover:text-blue-500">login</li>
+            </ul>
+          </nav>
+          {/* Mobile nav menu */}
+          <nav
+            className={`md:hidden absolute bg-white dark:bg-slate-900 w-full pb-5 left-0 text-center transition-all  duration-500 ease-in-out ${
+              open ? "top-24" : "top-[-320px]"
+            }`}
+          >
+            <ul className="">
+              <li className="my-4">
+                <NavLink
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                  className="my-6 text-xl  font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
+                  to={"home"}
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="my-4">
+                <NavLink
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                  className="my-6 text-xl font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
+                  to={"/courses"}
+                >
+                  AllCourses
+                </NavLink>
+              </li>
+              <li className="my-4">
+                <NavLink
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                  className="my-6 text-xl font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
+                  to={"/faq"}
+                >
+                  FAQ
+                </NavLink>
+              </li>
+              <li className="my-4">
+                <NavLink
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                  className="text-xl font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
+                  to={"/blog"}
+                >
+                  Blog
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <nav className="flex items-center">
-          <ul className=" hidden md:flex mr-10 ">
-            <li>
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="ml-6 text-lg  font-medium  hover:text-blue-500 transition-all duration-300 ease-in-out"
-                to={"home"}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="ml-6 text-lg font-medium   hover:text-blue-500 transition-all duration-300 ease-in-out"
-                to={"/courses"}
-              >
-                AllCourses
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="ml-6 text-lg font-medium  hover:text-blue-500 transition-all duration-300 ease-in-out"
-                to={"/faq"}
-              >
-                FAQ
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="ml-6 text-lg font-medium  hover:text-blue-500 transition-all duration-300 ease-in-out"
-                to={"blog"}
-              >
-                Blog
-              </NavLink>
-            </li>
-          </ul>
-          <ul className="flex items-center">
-            <li className="ml-4 text-lg  font-medium ">
-              <ToggleButton />
-            </li>
-            <li className="ml-4 text-lg   hover:text-blue-500">login</li>
-          </ul>
-        </nav>
-        {/* Mobile nav menu */}
-        <nav
-          className={`md:hidden absolute bg-white dark:bg-slate-900 w-full pb-5 left-0 text-center transition-all  duration-500 ease-in-out ${
-            open ? "top-24" : "top-[-320px]"
-          }`}
-        >
-          <ul className="">
-            <li className="my-4">
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="my-6 text-xl  font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
-                to={"home"}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="my-4">
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="my-6 text-xl font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
-                to={"/courses"}
-              >
-                AllCourses
-              </NavLink>
-            </li>
-            <li className="my-4">
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="my-6 text-xl font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
-                to={"/faq"}
-              >
-                FAQ
-              </NavLink>
-            </li>
-            <li className="my-4">
-              <NavLink
-                style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                className="text-xl font-semibold hover:text-green-500 transition-all duration-300 ease-in-out"
-                to={"/blog"}
-              >
-                Blog
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-      </div>
+      </Container>
     </div>
   );
 };
