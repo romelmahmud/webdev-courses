@@ -91,7 +91,7 @@ const Header = () => {
                 <ToggleButton />
               </li>
 
-              {user ? (
+              {user?.uid ? (
                 <>
                   <li className="ml-4 text-lg   hover:text-blue-500">
                     <img
