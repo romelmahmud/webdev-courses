@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
+import { AuthContext } from "../../context/AuthContext/AuthContext";
 
 const Login = () => {
+  const { loginProvider } = useContext(AuthContext);
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+
+  const handleGoogleLogin = () => {
+    loginProvider(googleProvider);
+  };
+
+  const handleGithubLogin = () => {
+    loginProvider(githubProvider);
+  };
   return (
     <section className="bg-gray-100 dark:bg-gray-800">
       <div className="flex justify-center items-center lg:min-h-screen  lg:grid-cols-12">
@@ -54,13 +67,28 @@ const Login = () => {
                   Don't have an account?
                   <Link
                     to={"/register"}
-                    className=" text-gray-100 font-semibold bg-blue-600 py-2 px-3 rounded "
+                    className=" text-gray-100 font-semibold bg-blue-600 py-1 px-1 rounded "
                   >
                     <span className="ml-1 text-md">Register</span>
                   </Link>
                 </p>
               </div>
             </form>
+            <hr className="my-6 border-gray-500 border" />
+            <div className="flex justify-between ">
+              <button
+                onClick={handleGoogleLogin}
+                className="py-3 px-6 bg-green-600 rounded  mr-4 text-white"
+              >
+                Google Login
+              </button>
+              <button
+                onClick={handleGithubLogin}
+                className="py-3 px-6 bg-gray-800 rounded  text-white"
+              >
+                Github Login
+              </button>
+            </div>
           </div>
         </div>
       </div>

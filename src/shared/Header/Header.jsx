@@ -82,7 +82,10 @@ const Header = () => {
               <li className="ml-4 text-lg  font-medium ">
                 <ToggleButton />
               </li>
-              <li className="ml-4 text-lg   hover:text-blue-500">login</li>
+
+              <li className="ml-4 text-lg   hover:text-blue-500">
+                <Link to={"/login"}>login</Link>
+              </li>
             </ul>
           </nav>
           {/* Mobile nav menu */}
