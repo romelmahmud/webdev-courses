@@ -1,7 +1,62 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext/AuthContext";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const [error, setError] = useState("");
+  const { createUser, updateUserProfile, verifyEmail } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const fullName = form.fullName.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    // console.log(fullName, photoURL, email, password);
+    if (password.length < 8) {
+      setError("Password mast be 8 character long ");
+      toast.error("Password mast be 8 character long");
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setError("");
+        form.reset();
+        handleUpdateUserProfile(fullName, photoURL);
+        handleEmailVerification();
+        toast.success("Account created, please verify your email address.");
+        navigate("/");
+      })
+      .catch((e) => {
+        console.error(e);
+        setError(e.message);
+      });
+  };
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => setError(error.message));
+  };
+
+  const handleEmailVerification = () => {
+    verifyEmail()
+      .then(() => {})
+      .catch((error) => setError(error.message));
+  };
+
   return (
     <section className="bg-gray-100 dark:bg-gray-800">
       <div className="flex justify-center items-center lg:min-h-screen  lg:grid-cols-12">
@@ -10,7 +65,10 @@ const Register = () => {
             <h1 className="text-4xl mb-6 font-semibold text-center dark:text-white text-blue-700">
               Register
             </h1>
-            <form className="mt-4 grid grid-cols-6 gap-6">
+            <form
+              onSubmit={handleSubmit}
+              className="mt-4 grid grid-cols-6 gap-6"
+            >
               <div className="col-span-6 ">
                 <label
                   for="FirstName"
@@ -22,7 +80,8 @@ const Register = () => {
                 <input
                   type="text"
                   id="FullName"
-                  name="Full_name"
+                  name="fullName"
+                  required
                   className="mt-1 w-full rounded-md border-gray-200 bg-gray-100 text-lg text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-600 dark:text-gray-200"
                 />
               </div>
@@ -37,7 +96,7 @@ const Register = () => {
                 <input
                   type="text"
                   id="photoUrl"
-                  name="photoUrl"
+                  name="photoURL"
                   className="mt-1 w-full rounded-md border-gray-200 bg-gray-100 text-lg text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-600 dark:text-gray-200"
                 />
               </div>
@@ -54,6 +113,7 @@ const Register = () => {
                   type="email"
                   id="Email"
                   name="email"
+                  required
                   className="mt-1 w-full rounded-md border-gray-200 bg-gray-100 text-lg text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-600 dark:text-gray-200"
                 />
               </div>
@@ -70,24 +130,14 @@ const Register = () => {
                   type="password"
                   id="Password"
                   name="password"
+                  required
                   className="mt-1 w-full rounded-md border-gray-200 bg-gray-100 text-lg text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-600 dark:text-gray-200"
                 />
               </div>
 
+              {/* Showing Error Message */}
               <div className="col-span-6">
-                <label for="MarketingAccept" className="flex gap-4">
-                  <input
-                    type="checkbox"
-                    id="MarketingAccept"
-                    name="marketing_accept"
-                    className="h-5 w-5 rounded-md border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800"
-                  />
-
-                  <span className="text-sm text-gray-700 dark:text-gray-200">
-                    By creating an account, I agree to all your terms and
-                    conditions.
-                  </span>
-                </label>
+                {error && <p className="mt-4  text-red-600">{error}</p>}
               </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
