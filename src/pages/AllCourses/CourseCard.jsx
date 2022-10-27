@@ -13,6 +13,8 @@ const CourseCard = ({ course }) => {
     instructor_info,
     rating,
   } = course;
+
+  
   return (
     <article className="overflow-hidden rounded-lg shadow-md transition hover:shadow-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white relative">
       <span class="absolute right-4 top-4 z-10 inline-flex items-center rounded-full bg-slate-900 px-3 py-1 text-sm font-semibold text-white">
