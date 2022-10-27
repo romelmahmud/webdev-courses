@@ -1,10 +1,12 @@
 import React from "react";
 
-const Sidebar = ({ categories, setCourses }) => {
+const Sidebar = ({ categories, setCourses, setLoading }) => {
   const handleClick = (id) => {
+    setLoading(true);
     fetch(`https://webdev-courses-romelmahmud.vercel.app/categories/${id}`)
       .then((res) => res.json())
       .then((data) => setCourses(data));
+    setLoading(false);
   };
 
   return (

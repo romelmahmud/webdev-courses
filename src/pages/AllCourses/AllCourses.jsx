@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Container from "../../Layout/Container/Container";
 import CoursesContainer from "./CoursesContainer";
 import Sidebar from "./Sidebar";
+
 const AllCourses = () => {
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -30,7 +31,11 @@ const AllCourses = () => {
       <Container>
         <div className="flex w-full flex-col-reverse md:flex-row justify-between items-start">
           <CoursesContainer courses={courses} loading={loading} />
-          <Sidebar categories={categories} setCourses={setCourses} />
+          <Sidebar
+            categories={categories}
+            setCourses={setCourses}
+            setLoading={setLoading}
+          />
         </div>
       </Container>
     </div>

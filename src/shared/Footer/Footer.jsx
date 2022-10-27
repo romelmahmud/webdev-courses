@@ -8,7 +8,7 @@ const Footer = () => {
       <Container>
         <div className="flex flex-col-reverse md:flex-row justify-center md:justify-between py-5 ">
           <div>
-            <p class="text-center text-xs text-gray-400 md:text-left">
+            <p className="text-center text-xs text-gray-400 md:text-left">
               Copyright &copy; 2023. WebDev Courses. All rights reserved.
             </p>
           </div>
