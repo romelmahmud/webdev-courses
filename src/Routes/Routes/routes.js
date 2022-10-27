@@ -10,12 +10,14 @@ import {
   Login,
   Profile,
   Register,
+  Error,
 } from "../../pages";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",

@@ -7,6 +7,7 @@ import Login from "./Login/Login";
 import Profile from "./Profile/Profile";
 import Register from "./Register/Register";
 import CourseDetails from "./CoursesDetails/CourseDetails";
+import Error from "./Error/Error";
 
 export {
   Home,
@@ -18,4 +19,5 @@ export {
   Profile,
   Register,
   CourseDetails,
+  Error,
 };
