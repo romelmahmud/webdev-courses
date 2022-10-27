@@ -14,7 +14,7 @@ const Checkout = () => {
   return (
     <Container>
       <div className="min-h-screen">
-        <div className="py-6 px-4 mt-24 pb-8 bg-slate-100 dark:bg-gray-800 rounded-md ">
+        <div className="py-6 px-4 mt-24 pb-8 bg-slate-50 shadow-md dark:bg-gray-800 rounded-md ">
           {!success && (
             <>
               <h1 className="text-4xl font-semibold text-blue-700 dark:text-gray-100 text-center">
