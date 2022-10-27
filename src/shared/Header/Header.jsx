@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { NavLink, Link } from "react-router-dom";
 import {
   Bars3Icon,
@@ -7,9 +7,17 @@ import {
 } from "@heroicons/react/24/solid";
 import ToggleButton from "./ToggleButton";
 import Container from "../../Layout/Container/Container";
+import { AuthContext } from "../../context/AuthContext/AuthContext";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+
+  const logoutHandler = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
 
   let activeStyle = {
     color: "rgb(59 130 246)",
@@ -25,7 +33,7 @@ const Header = () => {
             </Link>
           </div>
 
-          <div className="md:hidden">
+          <div className="lg:hidden">
             {open && (
               <XMarkIcon
                 className="h-8 w-8 hover:text-blue-500 cursor-pointer"
@@ -40,7 +48,7 @@ const Header = () => {
             )}
           </div>
           <nav className="flex items-center">
-            <ul className=" hidden md:flex mr-10 ">
+            <ul className=" hidden lg:flex mr-10 ">
               <li>
                 <NavLink
                   style={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -83,9 +91,28 @@ const Header = () => {
                 <ToggleButton />
               </li>
 
-              <li className="ml-4 text-lg   hover:text-blue-500">
-                <Link to={"/login"}>login</Link>
-              </li>
+              {user ? (
+                <>
+                  <li className="ml-4 text-lg   hover:text-blue-500">
+                    <img
+                      src={user?.photoURL ? user.photoURL : "./avatar.png"}
+                      alt={user?.displayName}
+                      title={user?.displayName}
+                      className="h-8 w-8 md:h-12 md:w-12 rounded-full cursor-pointer"
+                    ></img>
+                  </li>
+                  <li
+                    className="ml-4 text-lg   hover:text-blue-500 cursor-pointer"
+                    onClick={logoutHandler}
+                  >
+                    Logout
+                  </li>
+                </>
+              ) : (
+                <li className="ml-4 text-lg   hover:text-blue-500">
+                  <Link to={"/login"}>login</Link>
+                </li>
+              )}
             </ul>
           </nav>
           {/* Mobile nav menu */}

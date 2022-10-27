@@ -1,19 +1,43 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../context/AuthContext/AuthContext";
 
 const Login = () => {
-  const { loginProvider } = useContext(AuthContext);
+  const { loginProvider, signIn } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+  const [error, setError] = useState(false);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setError(false);
+
+    const form = e.target;
+
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((result) => console.log(result.user))
+      .catch((err) => setError(true));
+
+    form.reset();
+  };
 
   const handleGoogleLogin = () => {
-    loginProvider(googleProvider);
+    setError(false);
+    loginProvider(googleProvider)
+      .then(() => {})
+      .catch((err) => setError(true));
   };
 
   const handleGithubLogin = () => {
-    loginProvider(githubProvider);
+    setError(false);
+
+    loginProvider(githubProvider)
+      .then(() => {})
+      .catch((err) => setError(true));
   };
   return (
     <section className="bg-gray-100 dark:bg-gray-800">
@@ -23,7 +47,10 @@ const Login = () => {
             <h1 className="text-4xl mb-6 font-semibold text-center dark:text-white text-blue-700">
               Login
             </h1>
-            <form className="mt-4 grid grid-cols-6 gap-6">
+            <form
+              onSubmit={submitHandler}
+              className="mt-4 grid grid-cols-6 gap-6"
+            >
               <div className="col-span-6">
                 <label
                   for="Email"
@@ -37,6 +64,7 @@ const Login = () => {
                   id="Email"
                   name="email"
                   required
+                  onFocus={() => setError(false)}
                   className="mt-1 w-full rounded-md border-gray-200 bg-gray-100 text-lg text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-600 dark:text-gray-200"
                 />
               </div>
@@ -54,12 +82,21 @@ const Login = () => {
                   id="Password"
                   name="password"
                   required
+                  onFocus={() => setError(false)}
                   className="mt-1 w-full rounded-md border-gray-200 bg-gray-100 text-lg text-gray-700 shadow-sm dark:border-gray-700 dark:bg-gray-600 dark:text-gray-200"
                 />
               </div>
+              <div className="col-span-6 ">
+                {error && (
+                  <p className="text-xl text-red-500">Invalid Credential</p>
+                )}
+              </div>
 
               <div className="col-span-6 sm:flex sm:items-center sm:gap-4">
-                <button className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-md font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white">
+                <button
+                  type="submit"
+                  className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-md font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500 dark:hover:bg-blue-700 dark:hover:text-white"
+                >
                   Log In
                 </button>
 

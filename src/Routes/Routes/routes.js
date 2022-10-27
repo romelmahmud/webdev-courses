@@ -12,6 +12,7 @@ import {
   Register,
   Error,
 } from "../../pages";
+import PrivateRoute from "./PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
@@ -34,8 +35,6 @@ export const routes = createBrowserRouter([
       {
         path: "/courses",
         element: <AllCourses />,
-        loader: () =>
-          fetch("https://webdev-courses-romelmahmud.vercel.app/courses"),
       },
       {
         path: "/courses/:id",
@@ -47,7 +46,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <PrivateRoute>
+            <Checkout />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/faq",

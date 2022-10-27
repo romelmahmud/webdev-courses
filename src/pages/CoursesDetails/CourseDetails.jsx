@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Container from "../../Layout/Container/Container";
 import {
   UserIcon,
@@ -106,9 +106,11 @@ const CourseDetails = () => {
           </h3>
           <p className="text-xl">{course_description}</p>
         </div>
-        <button className="ml-4 mb-6 lg:ml-10 bg-blue-800 hover:bg-blue-900 text-xl font-semibold py-4 px-6 rounded text-white transition-all duration-300 ease-in-out">
-          Get Premium Access
-        </button>
+        <Link to={"/checkout"}>
+          <button className="ml-4 mb-6 lg:ml-10 bg-blue-800 hover:bg-blue-900 text-xl font-semibold py-4 px-6 rounded text-white transition-all duration-300 ease-in-out">
+            Get Premium Access
+          </button>
+        </Link>
       </div>
     </Container>
   );

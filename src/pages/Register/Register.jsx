@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 
 const Register = () => {
   const [error, setError] = useState("");
-  const { createUser, updateUserProfile, verifyEmail } =
+  const { createUser, updateUserProfile, verifyEmail, setUser } =
     useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        setUser(user);
         setError("");
         form.reset();
         handleUpdateUserProfile(fullName, photoURL);
