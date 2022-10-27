@@ -62,8 +62,8 @@ const Login = () => {
             >
               <div className="col-span-6">
                 <label
-                  for="Email"
-                  class="block text-lg font-medium text-gray-700 dark:text-gray-200"
+                  htmlFor="Email"
+                  className="block text-lg font-medium text-gray-700 dark:text-gray-200"
                 >
                   Email
                 </label>
@@ -80,7 +80,7 @@ const Login = () => {
 
               <div className="col-span-6 ">
                 <label
-                  for="Password"
+                  htmlFor="Password"
                   className="block text-lg font-medium text-gray-700 dark:text-gray-200"
                 >
                   Password
@@ -113,7 +113,7 @@ const Login = () => {
                   Don't have an account?
                   <Link
                     to={"/register"}
-                    className=" text-gray-100 font-semibold bg-blue-600 py-1 px-1 rounded "
+                    className=" text-blue-800 font-semibold  underline "
                   >
                     <span className="ml-1 text-md">Register</span>
                   </Link>

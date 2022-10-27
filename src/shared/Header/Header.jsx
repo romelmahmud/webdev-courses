@@ -86,14 +86,14 @@ const Header = () => {
                 </NavLink>
               </li>
             </ul>
-            <ul className="flex items-center">
-              <li className="ml-4 text-lg  font-medium ">
+            <ul className="flex  items-center">
+              <li className="ml-2 text-lg  font-medium ">
                 <ToggleButton />
               </li>
 
               {user?.uid ? (
                 <>
-                  <li className="ml-4 text-lg   hover:text-blue-500">
+                  <li className="ml-2 text-lg   hover:text-blue-500">
                     <img
                       src={user?.photoURL ? user.photoURL : "./avatar.png"}
                       alt={user?.displayName}
@@ -102,7 +102,7 @@ const Header = () => {
                     ></img>
                   </li>
                   <li
-                    className="ml-4 text-lg   hover:text-blue-500 cursor-pointer"
+                    className="ml-4 text-lg hidden md:block  hover:text-blue-500 cursor-pointer"
                     onClick={logoutHandler}
                   >
                     Logout

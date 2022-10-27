@@ -7,7 +7,7 @@ const AllCourses = () => {
   const [courses, setCourses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(false);
-  console.log(courses);
+
   useEffect(() => {
     setLoading(true);
     fetch("https://webdev-courses-romelmahmud.vercel.app/categories/01")
@@ -27,7 +27,7 @@ const AllCourses = () => {
   }
 
   return (
-    <div className="py-14">
+    <div className="py-14 min-h-screen">
       <Container>
         <div className="flex w-full flex-col-reverse lg:flex-row justify-between items-start">
           <CoursesContainer courses={courses} loading={loading} />

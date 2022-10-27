@@ -71,7 +71,7 @@ const Register = () => {
             >
               <div className="col-span-6 ">
                 <label
-                  for="FirstName"
+                  htmlFor="FirstName"
                   className="block text-lg font-medium text-gray-700 dark:text-gray-200"
                 >
                   Full Name
@@ -87,7 +87,7 @@ const Register = () => {
               </div>
               <div className="col-span-6 ">
                 <label
-                  for="photoUrl"
+                  htmlFor="photoUrl"
                   className="block text-lg font-medium text-gray-700 dark:text-gray-200"
                 >
                   Photo URL
@@ -103,8 +103,8 @@ const Register = () => {
 
               <div className="col-span-6">
                 <label
-                  for="Email"
-                  class="block text-lg font-medium text-gray-700 dark:text-gray-200"
+                  htmlFor="Email"
+                  className="block text-lg font-medium text-gray-700 dark:text-gray-200"
                 >
                   Email
                 </label>
@@ -120,7 +120,7 @@ const Register = () => {
 
               <div className="col-span-6 ">
                 <label
-                  for="Password"
+                  htmlFor="Password"
                   className="block text-lg font-medium text-gray-700 dark:text-gray-200"
                 >
                   Password
@@ -149,7 +149,7 @@ const Register = () => {
                   Already have an account?
                   <Link
                     to={"/login"}
-                    className=" text-gray-100 font-semibold bg-blue-600 py-2 px-3 rounded "
+                    className=" text-blue-800 font-semibold  underline "
                   >
                     <span className="ml-1 text-md">Log in</span>
                   </Link>
