@@ -12,7 +12,7 @@ import {
   Register,
   Error,
 } from "../../pages";
-import PrivateRoute from "./PrivateRoute/PrivateRoute";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
   {
