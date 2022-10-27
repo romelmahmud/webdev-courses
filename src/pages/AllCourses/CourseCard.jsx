@@ -6,9 +6,7 @@ const CourseCard = ({ course }) => {
   const {
     course_title,
     id,
-    category,
     course_imgUrl,
-    category_id,
     course_details,
     instructor_info,
     rating,

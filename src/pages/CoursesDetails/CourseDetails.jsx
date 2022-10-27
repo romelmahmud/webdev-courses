@@ -22,6 +22,7 @@ const CourseDetails = () => {
     rating,
     difficulty_level,
     total_students,
+    id,
   } = course;
   return (
     <Container>
@@ -106,7 +107,7 @@ const CourseDetails = () => {
           </h3>
           <p className="text-xl">{course_description}</p>
         </div>
-        <Link to={"/checkout"}>
+        <Link to={`/checkout/${id}`}>
           <button className="ml-4 mb-6 lg:ml-10 bg-blue-800 hover:bg-blue-900 text-xl font-semibold py-4 px-6 rounded text-white transition-all duration-300 ease-in-out">
             Get Premium Access
           </button>
