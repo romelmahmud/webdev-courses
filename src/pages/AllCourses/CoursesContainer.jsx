@@ -8,7 +8,7 @@ const CoursesContainer = ({ courses, loading }) => {
   console.log(loading);
 
   return (
-    <div className=" md:w-3/4 grid lg:grid-cols-2  gap-5">
+    <div className="  w-full lg:w-3/4 grid lg:grid-cols-2  gap-5">
       {loading ? (
         <h1 className="text-2xl text-white">Loading</h1>
       ) : (

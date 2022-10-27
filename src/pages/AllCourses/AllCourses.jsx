@@ -29,7 +29,7 @@ const AllCourses = () => {
   return (
     <div className="py-14">
       <Container>
-        <div className="flex w-full flex-col-reverse md:flex-row justify-between items-start">
+        <div className="flex w-full flex-col-reverse lg:flex-row justify-between items-start">
           <CoursesContainer courses={courses} loading={loading} />
           <Sidebar
             categories={categories}

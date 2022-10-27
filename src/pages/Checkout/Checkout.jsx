@@ -20,9 +20,13 @@ const Checkout = () => {
               <h1 className="text-4xl font-semibold text-blue-700 dark:text-gray-100 text-center">
                 {course_title}
               </h1>
-              <div className="flex items-center justify-around mt-8">
-                <div className="w-1/3">
-                  <img src={course_imgUrl} alt="" className="rounded-md" />
+              <div className="flex flex-col md:flex-row items-center justify-around mt-8">
+                <div className=" w-3/5 md:w-1/3">
+                  <img
+                    src={course_imgUrl}
+                    alt=""
+                    className="rounded-md mb-6 md:mb-0"
+                  />
                 </div>
                 <div className="w-3/5">
                   <p className="text-lg mb-6">{course_details}</p>

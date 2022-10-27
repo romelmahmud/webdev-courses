@@ -10,11 +10,11 @@ const Sidebar = ({ categories, setCourses, setLoading }) => {
   };
 
   return (
-    <aside className=" md:w-1/5 rounded-lg shadow-md transition hover:shadow-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-4">
+    <aside className="w-full mb-8 lg:mb-0 lg:w-1/5 rounded-lg shadow-md transition hover:shadow-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-4">
       <h3 className="text-2xl text-center text-blue-600 dark:text-blue-500  font-medium">
         Courses Categories
       </h3>
-      <ul className="mt-6">
+      <ul className="mt-6 flex lg:block flex-wrap">
         {categories?.map((category) => (
           <li
             className=" my-4 hover:bg-blue-50 cursor-pointer hover:dark:bg-gray-700 hover:text-blue-700 hover:rounded-md"
